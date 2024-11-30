@@ -26,8 +26,8 @@ find_package(bsoncxx REQUIRED)
 # C++
 include_directories(include)
 include_directories(src)
-include_directories(${LIBMONGOCXX_INCLUDE_DIRS})
-include_directories(${LIBBSONCXX_INCLUDE_DIRS})
+include_directories(/usr/local/include/mongocxx/v_noabi/ ${MONGOCXX_INCLUDE_DIRS})
+include_directories(/usr/local/include/bsoncxx/v_noabi/ ${BSONCXX_INCLUDE_DIRS})
 
 set(LIB ${CMAKE_PROJECT_NAME}_lib)
 set(SOURCES
