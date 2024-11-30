@@ -20,8 +20,8 @@ find_package(kant_msgs REQUIRED)
 find_package(kant_knowledge_base REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(simple_node REQUIRED)
-find_package(libmongocxx REQUIRED)
-find_package(libbsoncxx REQUIRED)
+find_package(mongocxx REQUIRED)
+find_package(bsoncxx REQUIRED)
 
 # C++
 include_directories(include)
@@ -53,8 +53,8 @@ set(DEPENDENCIES
   kant_knowledge_base
   std_srvs
   simple_node
-  libmongocxx
-  libbsoncxx
+  mongocxx
+  bsoncxx
 )
 
 add_library(${LIB} STATIC ${SOURCES})
