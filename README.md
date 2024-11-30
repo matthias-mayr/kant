@@ -55,7 +55,7 @@ $ sudo pip3 install mongoengine dnspython
 ### Mongocxx
 
 ```shell
-$ sudo apt install libmongoc-dev libmongoc-1.0-0 -y  # Ubuntu 22, mongoc 1.21.0
+$ sudo apt install libmongoc-dev libmongoc-1.0-0 libboost-dev -y  # Ubuntu 22, mongoc 1.21.0
 
 $ curl -OL https://github.com/mongodb/mongo-cxx-driver/archive/refs/tags/r3.11.0.tar.gz
 $ tar -xzf r3.11.0.tar.gz
