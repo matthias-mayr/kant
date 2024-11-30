@@ -42,6 +42,10 @@ PDDL elements (DTOs) that can be used are:
 
 ## Installation
 
+### Basics
+```shell
+$ sudo apt install -y python3-pip wget curl git gpg
+
 ### Mongoengine
 
 ```shell
@@ -51,28 +55,29 @@ $ sudo pip3 install mongoengine dnspython
 ### Mongocxx
 
 ```shell
-$ sudo apt install libmongoc-dev libmongoc-1.0-0 -y  # Ubuntu 20, mongoc 1.16.1
+$ sudo apt install libmongoc-dev libmongoc-1.0-0 -y  # Ubuntu 22, mongoc 1.21.0
 
-$ curl -OL https://github.com/mongodb/mongo-cxx-driver/archive/refs/tags/r3.4.2.tar.gz
-$ tar -xzf r3.4.2.tar.gz
+$ curl -OL https://github.com/mongodb/mongo-cxx-driver/archive/refs/tags/r3.11.0.tar.gz
+$ tar -xzf r3.11.0.tar.gz
 
-$ cd mongo-cxx-driver-r3.4.2/build
+$ cd mongo-cxx-driver-r3.11.0/build
 $ cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBSONCXX_POLY_USE_BOOST=1
 $ cmake --build .
 $ sudo cmake --build . --target install
+$ cd ../..
 
 $ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 $ echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
 
-$ rm r3.4.2.tar.gz
-$ rm -rf mongo-cxx-driver-r3.4.2
+$ rm r3.11.0.tar.gz
+$ rm -rf mongo-cxx-driver-r3.11.0
 ```
 
 ### MongoDB
 
 ```shell
-$ wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
-$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+$ wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-server.gpg
+$ echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 $ sudo apt-get update
 $ sudo apt-get install -y mongodb-org
 $ sudo systemctl start mongod
